@@ -1,6 +1,14 @@
-public class OopsBanner{
+
+public class OopsBanner {
     public static void main(String[] args) {
-        // uc2:
-        System.out.println("OOPS");
+        System.out.println(String.join("", "   ***   ", "   ***   ", "******   ", "   *****"));
+        System.out.println(String.join("", " **   ** ", " **   ** ", "**    ** ", " **     "));
+        System.out.println(String.join("", "**     **", "**     **", "**     **", "**      "));
+        System.out.println(String.join("", "**     **", "**     **", "**    ** ", " **     "));
+        System.out.println(String.join("", "**     **", "**     **", "******   ", "  ***   "));
+        System.out.println(String.join("", "**     **", "**     **", "**       ", "     ** "));
+        System.out.println(String.join("", "**     **", "**     **", "**       ", "      **"));
+        System.out.println(String.join("", " **   ** ", " **   ** ", "**       ", "     ** "));
+        System.out.println(String.join("", "   ***   ", "   ***   ", "**       ", "*****   "));
     }
 }
