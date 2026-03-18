@@ -1,29 +1,89 @@
 public class OopsBanner {
+
+    // Static Inner Class
+    static class CharacterPattern {
+
+        private char character;
+        private String[] pattern;
+
+        public CharacterPattern(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
+    }
+
     public static void main(String[] args) {
 
-        String[] bannerLines = createBanner();
-        printBanner(bannerLines);
+        Map<Character, CharacterPattern> patternMap = initializePatterns();
 
+        printBanner("OOPS", patternMap);
     }
 
-    public static String[] createBanner() {
+    // Initialize character patterns
+    public static Map<Character, CharacterPattern> initializePatterns() {
 
-        return new String[] {
+        Map<Character, CharacterPattern> map = new HashMap<>();
 
-            String.join("", "  *****          *****          *******         ******* "),
-            String.join("", "*       *      *       *       *        *      *         "),
-            String.join("", "*       *      *       *       *        *      *         "),
-            String.join("", "*       *      *       *       *******          *******"),
-            String.join("", "*       *      *       *       *                        *"),
-            String.join("", "*       *      *       *       *                        *"),
-            String.join("", "  *****          *****         *                *******")
-        };
+        map.put('O', new CharacterPattern('O', new String[]{
+                "  *****  ",
+                " *     * ",
+                " *     * ",
+                " *     * ",
+                " *     * ",
+                " *     * ",
+                "  *****  "
+        }));
+
+        map.put('P', new CharacterPattern('P', new String[]{
+                " ******* ",
+                " *     * ",
+                " *     * ",
+                " ******* ",
+                " *       ",
+                " *       ",
+                " *       "
+        }));
+
+        map.put('S', new CharacterPattern('S', new String[]{
+                " ******* ",
+                " *       ",
+                " *       ",
+                " ******* ",
+                "       * ",
+                "       * ",
+                " ******* "
+        }));
+
+        return map;
     }
 
-    public static void printBanner(String[] bannerLines) {
+    // Print banner dynamically
+    public static void printBanner(String text, Map<Character, CharacterPattern> map) {
 
-        for (String line : bannerLines) {
-            System.out.println(line);
+        int height = 7;
+
+        for (int row = 0; row < height; row++) {
+
+            StringBuilder lineBuilder = new StringBuilder();
+
+            for (char ch : text.toCharArray()) {
+
+                CharacterPattern cp = map.get(ch);
+
+                if (cp != null) {
+                    lineBuilder.append(cp.getPattern()[row]).append("   ");
+                }
+            }
+
+            System.out.println(lineBuilder.toString());
         }
     }
 }
